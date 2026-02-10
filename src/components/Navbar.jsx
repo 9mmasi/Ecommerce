@@ -11,16 +11,16 @@ const Navbar = () => {
                 shopEZ
             </Link>
             <div className="navbar-links">
-                <Link className="nav-link" to="/">
+                <Link className="navbar-link" to="/">
                     Home
                 </Link>
-                <Link className="nav-link" to="/checkout">
+                <Link className="navbar-link" to="/checkout">
                     Cart
                 </Link>
             </div>
             <div className="navbar-auth">
                 {currentUser ? (
-                <div className="nav-auth-links">
+                <div className="navbar-auth-links">
                     
                         <span >
                             Welcome,{currentUser.email}
@@ -33,7 +33,7 @@ const Navbar = () => {
                         Logout
                     </Link>
                     </div>)
-                    : (<div className="navbar-auth">
+                    : (<div className="navbar-auth-links">
                    <Link className="btn btn-primary" to="/auth">
                         Login
                     </Link>

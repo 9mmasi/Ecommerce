@@ -19,20 +19,31 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="navbar-auth">
+                {currentUser ? (
                 <div className="nav-auth-links">
-                    <Link className="btn btn-primary" to="/auth">
+                    
+                        <span >
+                            Welcome,{currentUser.email}
+                        </span>
+                  
+                  
+                    
+                    
+                <Link className="btn btn-secondary" to="/auth" onClick={logout}>
+                        Logout
+                    </Link>
+                    </div>)
+                    : (<div className="navbar-auth">
+                   <Link className="btn btn-primary" to="/auth">
                         Login
                     </Link>
-                    {currentUser ?
-                       <Link className="btn btn-secondary" to="/auth" onClick={logout}>
-                        Logout
-                    </Link>:<Link className="btn btn-secondary" to="/auth" >
+                    <Link className="btn btn-secondary" to="/auth" >
                         signup
                     </Link>
-                    }
                     
                     
-                </div>
+                    
+                </div>)}
             </div>
         </div>
     </nav>

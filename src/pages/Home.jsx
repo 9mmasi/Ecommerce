@@ -1,11 +1,12 @@
 import React from 'react'
-import { get } from 'react-hook-form'
-import { getProducts } from '../data/products'
 
+import { getProducts } from '../data/products'
+import {  useCart } from "react-use-cart";
 import ProductCard from '../components/ProductCard'
 
 const Home = () => {
   const products=getProducts()
+   const { addItem } = useCart();
   return (
     <div className='page'>
       <div className="home-hero">
@@ -16,7 +17,7 @@ const Home = () => {
         <h2 className='page-title'>Featured Products</h2>
         <div className="product-grid">
           {products.map((product)=>(
-           <ProductCard product={product} key={product.id}/>
+           <ProductCard product={product} addItem={addItem} key={product.id}/>
           ))}
         </div>
       </div>

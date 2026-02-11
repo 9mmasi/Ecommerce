@@ -7,20 +7,23 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import { AuthProvider } from './context/AuthContext'
 import ProductDetail from './pages/ProductDetail'
-
+import { CartProvider } from "react-use-cart";
+import Cart from './pages/Cart'
 function App() {
  
 
   return (
     <div className="app">
       <AuthProvider>
-<Navbar/>    
+<Navbar/>  
+<CartProvider>
   <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/auth' element={<Auth/>} />
-        <Route path='/checkout' element={<Checkout/>} />
+        <Route path='/checkout' element={<Cart/>} />
         <Route path='/product/:id' element={<ProductDetail/>} />
       </Routes>
+      </CartProvider>  
       </AuthProvider>
     </div>
   )

@@ -1,7 +1,8 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 const ProductCard = (props) => {
+ 
   return (
      <div  className="product-card">
               <img src={props.product.image} alt={props.product.name} className='product-card-image'/>
@@ -10,7 +11,7 @@ const ProductCard = (props) => {
                 <p className='product-card-price'>${props.product.price}</p>
                  <div className="product-card-actions">
                 <Link className='btn btn-secondary' to={`product/${props.product.id}`}>View Details</Link>
-                <button className='btn btn-primary'>Add to cart</button>
+                <button className='btn btn-primary' onClick={()=>props.addItem(props.product)}>Add to cart</button>
               </div>
               </div>
              

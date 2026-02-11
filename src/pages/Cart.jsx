@@ -11,7 +11,12 @@ function Cart() {
     removeItem,
   } = useCart();
 
-  if (isEmpty) return <p>Your cart is empty</p>;
+  if (isEmpty) return <p style={{
+    textAlign:"center",
+    fontSize:"1.5rem",
+    marginTop:"2rem",
+    fontWeight:"bold"
+  }}>Your cart is empty</p>;
 
   return (
     <div className="page">

@@ -1,9 +1,12 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
+import { useCart } from 'react-use-cart'
 
 const Navbar = () => {
-    const {logout,currentUser,signup}=useContext(AuthContext)
+    const {logout,currentUser}=useContext(AuthContext)
+    const {isEmpty,totalUniqueItems}=useCart()
+    
   return (
     <nav className='navbar'>
         <div className="navbar-container">
@@ -15,7 +18,7 @@ const Navbar = () => {
                     Home
                 </Link>
                 <Link className="navbar-link" to="/checkout">
-                    Cart
+                    Cart{isEmpty ?null : ` (${totalUniqueItems})`}
                 </Link>
             </div>
             <div className="navbar-auth">

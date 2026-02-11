@@ -1,9 +1,11 @@
 import React, {  useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getProductById } from '../data/products'
+import {  useCart } from "react-use-cart";
 
 const ProductDetail = () => {
     const [productDetail, setProductDetail] = useState(null)
+    const { addItem } = useCart();
     let {id}=useParams()
     const navigate=useNavigate()
     useEffect(() => {
@@ -30,7 +32,7 @@ const ProductDetail = () => {
                     <h1 className='product-detail-name'>{productDetail?.name}</h1>
                     <p className='product-detail-price'>Price: ${productDetail?.price}</p>
                     <p className='product-detail-description'>{productDetail?.description}</p>
-                    <button className='btn btn-primary'>Add to Cart</button>
+                    <button className='btn btn-primary' onClick={() => addItem(productDetail)}>Add to Cart</button>
                 </div>
             </div>
         </div>

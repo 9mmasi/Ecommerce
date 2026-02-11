@@ -52,6 +52,7 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
+    localStorage.removeItem('currentUser')
     setCurrentUser(null)
   }
 

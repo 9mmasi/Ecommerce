@@ -9,19 +9,21 @@ import { AuthProvider } from './context/AuthContext'
 import ProductDetail from './pages/ProductDetail'
 import { CartProvider } from "react-use-cart";
 import Cart from './pages/Cart'
+import ProtectedRoute from './context/ProtectedRoute'
 function App() {
  
 
   return (
     <div className="app">
       <AuthProvider>
+        <CartProvider>
 <Navbar/>  
-<CartProvider>
+
   <Routes>
-        <Route path='/' element={<Home/>} />
+        <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>} />
         <Route path='/auth' element={<Auth/>} />
-        <Route path='/checkout' element={<Cart/>} />
-        <Route path='/product/:id' element={<ProductDetail/>} />
+        <Route path='/checkout' element={<ProtectedRoute><Cart/></ProtectedRoute>} />
+        <Route path='/product/:id' element={<ProtectedRoute><ProductDetail/></ProtectedRoute>} />
       </Routes>
       </CartProvider>  
       </AuthProvider>

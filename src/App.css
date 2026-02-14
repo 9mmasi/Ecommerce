@@ -473,6 +473,14 @@ body {
 .btn-secondary:hover {
   background-color: #545b62;
 }
+.btn-remove {
+  background-color: #bd2a2f;
+  color: #fff;
+}
+
+.btn-remove:hover {
+  background-color: #c7151b;
+}
 
 .btn-large {
   padding: 1rem 2rem;

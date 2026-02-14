@@ -1,4 +1,5 @@
 import {  useCart } from "react-use-cart";
+import Checkout from "./Checkout";
 
 
 
@@ -9,7 +10,13 @@ function Cart() {
     items,
     updateItemQuantity,
     removeItem,
+      emptyCart,
   } = useCart();
+  function getTotalPrice() {
+    return items.reduce((total, item) => {
+      return total + item.price * (item.quantity ?? 0);
+    }, 0);
+  }
 
   if (isEmpty) return <p style={{
     textAlign:"center",
@@ -88,10 +95,33 @@ function Cart() {
             </div>
           </div>
         ))}
-      </div>
-    </div>
+         <div className="checkout-total">
+    <span className="checkout-total-label">Shipping</span>
+    <span className="checkout-total-value">Free</span>
   </div>
+
+  <div className="checkout-total">
+    <span className="checkout-total-label checkout-total-final">
+      Total
+    </span>
+    <span className="checkout-total-value checkout-total-final">
+      ${getTotalPrice().toFixed(2)}
+    </span>
+  </div>
+        <button onClick={emptyCart} className="btn btn-remove btn-large btn-block">
+          Clear Cart
+  </button>
+  <button className="btn btn-primary btn-large btn-block">
+    Proceed to Checkout
+  </button>
 </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+
 
   );
 }
